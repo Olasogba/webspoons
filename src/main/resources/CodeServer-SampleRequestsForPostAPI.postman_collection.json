@@ -1,0 +1,326 @@
+{
+	"info": {
+		"_postman_id": "95e852cb-235f-4539-be86-62a52d78b885",
+		"name": "CodeServer-SampleRequestsForPostAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post - Full Payload - Expect 201 with Location header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ac58697f-4e7a-44a2-9de2-0a6eaa678405",
+						"exec": [
+							"pm.test(\"Status code is 201 and Location header is present\", function () {",
+							"    pm.response.to.have.status(201);",
+							"    pm.expect(pm.response.headers.get('Location')).to.include(\"/api/v2/projects/\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"externalId\": \"EXTERNALID\",\n\t\"name\": \"Name\",\n\t\"sdlcSystem\": {\n\t\t\"id\": 1\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v2/projects/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post - Minimal Payload - Expect 201 with Location header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "85fc24a9-05d1-4162-92f0-156acfc9fc8c",
+						"exec": [
+							"pm.test(\"Status code is 201 and Location header is present\", function () {",
+							"    pm.response.to.have.status(201);",
+							"    pm.expect(pm.response.headers.get('Location')).to.include(\"/api/v2/projects/\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"externalId\": \"EXTERNAL-ID\",\n\t\"sdlcSystem\": {\n\t\t\"id\": 1\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v2/projects/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post - Payload Containing Illegal Value - Expect 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d7709e90-b0bf-47f3-afee-d47ff7a1e8c1",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"sdlcSystem\": {\n\t\t\"id\": \"Whatever\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v2/projects/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post - Payload Not Containing External ID - Expect 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b7c46386-99ae-4c6b-b01b-7b4ff56d4734",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"sdlcSystem\": {\n\t\t\"id\": 1\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v2/projects/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post - Payload Not Containing System - Expect 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "de2e8ad6-5e39-4026-a9c3-d11ab447d9b1",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"externalId\": \"EXTERNAL-ID\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v2/projects/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post - Payload Containing Non Existing System - Expect 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd7c958a-165b-4404-9ade-4fcc2c1a3102",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"externalId\": \"EXTERNALID\",\n\t\"sdlcSystem\": {\n\t\t\"id\": 12345\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v2/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post - Payload Containing Conflicting System / External ID - Expect 409",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ba75d2dc-04ae-44f6-bdb6-595087719428",
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"externalId\": \"SAMPLEPROJECT\",\n\t\"sdlcSystem\": {\n\t\t\"id\": 1\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v2/projects/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
